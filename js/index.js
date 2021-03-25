@@ -2,7 +2,7 @@
 
 const messageSystem = {
   startFetching() {
-    setInterval(this.fetchMessages, 1000);
+    setInterval(this.fetchMessages, 3000);
     //console.log(this.startFetching);
   },
 
@@ -19,8 +19,8 @@ const messageSystem = {
       .then((data) => {
         console.log(data);
         const output = document.getElementById("output");
-        let htmlString = '';
-        data.foreach(message => {
+        let htmlString = "";
+        data.forEach((message) => {
           htmlString += `<div id="output">
           <div class="message">
             <span class="by">${message.handle}</span>
@@ -28,12 +28,15 @@ const messageSystem = {
             <p>${message.message}</p>
           </div>`;
         });
+
         output.innerHTML = htmlString;
       });
-
-    // https://thecrew.cc/api/message/read.php?token=__TOKEN__ GET
+    //const output = document.getElementById('output');
+    //output.insertAdjacentHTML('beforeend', htmlString);
   }
 };
+
+// https://thecrew.cc/api/message/read.php?token=__TOKEN__ GET
 
 const userSystem = {
   token: "",
